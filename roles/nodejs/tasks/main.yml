@@ -30,6 +30,9 @@
   args:
     creates: /usr/share/keyrings/nodesource.gpg
 
+- name: Set permissions on NodeSource keyring
+  file:
+    path: /usr/share/keyrings/nodesource.gpg
     mode: '0644'
 
 - name: Add NodeSource repository
