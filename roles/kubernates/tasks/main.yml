@@ -1,0 +1,19 @@
+---
+- name: Prepare all Kubernetes nodes
+  hosts: kube_nodes
+  become: yes
+  roles:
+    - docker
+    - kubernetes-common
+
+- name: Setup Kubernetes master
+  hosts: kube_masters
+  become: yes
+  roles:
+    - kubernetes-master
+
+- name: Setup Kubernetes workers
+  hosts: kube_workers
+  become: yes
+  roles:
+    - kubernetes-worker
