@@ -18,10 +18,18 @@
     state: directory
     mode: '0755'
 
-- name: Download NodeSource GPG key
+- name: Download NodeSource GPG key (ASCII)
   get_url:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    dest: /usr/share/keyrings/nodesource.gpg
+    dest: /tmp/nodesource.gpg.key
+    mode: '0644'
+
+- name: Dearmor NodeSource GPG key
+  command: >
+    gpg --dearmor -o /usr/share/keyrings/nodesource.gpg /tmp/nodesource.gpg.key
+  args:
+    creates: /usr/share/keyrings/nodesource.gpg
+
     mode: '0644'
 
 - name: Add NodeSource repository
