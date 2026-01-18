@@ -1,0 +1,6 @@
+---
+- name: Install Node.js on worker nodes
+  hosts: node_workers
+  become: yes 
+  roles:
+    - nodejs
