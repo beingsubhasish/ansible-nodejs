@@ -1,6 +1,6 @@
 ---
-- name: Install Node.js on worker nodes
-  hosts: node_workers
-  become: yes 
+- name: Install Docker on worker nodes
+  hosts: docker_workers
+  become: yes
   roles:
-    - nodejs
+    - docker
